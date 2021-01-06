@@ -77,9 +77,9 @@ p.lead {
   text-transform: uppercase;
 }
 
-/* #sideNav .navbar-toggler:focus {
-  outline-color: #0b4c2e;
-} */
+ #sideNav .navbar-toggler:focus {
+  outline-color: #000;
+} 
 
 @media (min-width: 992px) {
   #sideNav {
