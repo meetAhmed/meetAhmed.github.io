@@ -156,4 +156,25 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
 
   });
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    function navigate() {
+      let hash = window.location.hash.substring(1) || "about"; // Default to 'about' if no hash
+      let activePage = document.querySelector(`[data-page="${hash}"]`);
+      let activeNavLink = document.querySelector(`.navbar-link[href="#${hash}"]`);
+  
+      if (activePage) {
+        document.querySelectorAll("[data-page]").forEach(page => page.classList.remove("active"));
+        document.querySelectorAll(".navbar-link").forEach(link => link.classList.remove("active"));
+  
+        activePage.classList.add("active");
+        if (activeNavLink) activeNavLink.classList.add("active");
+      }
+    }
+  
+    window.addEventListener("hashchange", navigate);
+    navigate(); // Call on page load
+  });
+  
 }
