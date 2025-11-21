@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PortionPal - Your Privacy-First Health Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', 'Futura', 'Futura PT', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #e0e0e0;
+      overflow-x: hidden;
+      background: #121826;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(18, 24, 38, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #e0e0e0;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #e0e0e0;
+      font-weight: 500;
+      transition: color 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: #EC944F;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #e0e0e0;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      margin-top: 80px;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+      color: white;
+      text-align: center;
+      padding: 4rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(236, 148, 79, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: moveBackground 20s linear infinite;
+    }
+
+    @keyframes moveBackground {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(50px, 50px);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #EC944F 0%, #DE574C 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(236, 148, 79, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: #DE574C;
+    }
+
+    .section {
+      padding: 5rem 5%;
+    }
+
+    .section-dark {
+      background: #121826;
+    }
+
+    .section-darker {
+      background: #0a0e1a;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 1rem;
+      color: #e0e0e0;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      margin-bottom: 3rem;
+      opacity: 0.8;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #b0b0b0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: #1a2332;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, border-color 0.3s;
+      border: 1px solid rgba(236, 148, 79, 0.2);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(236, 148, 79, 0.5);
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #EC944F;
+    }
+
+    .feature-card p {
+      color: #b0b0b0;
+    }
+
+    .screenshots-section {
+      background: #0a0e1a;
+      padding: 5rem 5%;
+    }
+
+    .screenshots-container {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      text-align: center;
+    }
+
+    .screenshot-main {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .privacy-section {
+      background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .privacy-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 900px;
+      margin: 2rem auto 0;
+    }
+
+    .privacy-item {
+      padding: 1rem;
+    }
+
+    .privacy-item h3 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      margin-bottom: 0.5rem;
+      color: #EC944F;
+    }
+
+    .privacy-item p {
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    .pricing-section {
+      text-align: center;
+      background: #121826;
+    }
+
+    .pricing-info {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #b0b0b0;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .pricing-highlight {
+      background: #1a2332;
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      border: 2px solid rgba(236, 148, 79, 0.3);
+    }
+
+    .pricing-highlight h3 {
+      color: #EC944F;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: #0a0e1a;
+      color: white;
+      text-align: center;
+      padding: 2rem 5%;
+    }
+
+    footer a {
+      color: #EC944F;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(18, 24, 38, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .section {
+        padding: 3rem 5%;
+      }
+
+      .privacy-features {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .privacy-features {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .screenshot-item {
+        flex: 0 0 220px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="Assets/appIcon.png" alt="PortionPal Icon" class="logo-icon">
+      <span>PortionPal</span>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+      <li><a
+          href="mailto:dev.ahmed.work@gmail.com?subject=PortionPal%20Feedback%20%7C%20Questions%20%7C%20Concern">Contact
+          Us</a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Your Smart & Privacy First Health Companion</h1>
+      <p>Track glucose, calories, steps, and weight in one simple app. Whether managing diabetes or pursuing better
+        health, PortionPal guides you toward smarter habits and stronger control.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary">Download for iOS</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section section-dark">
+    <h2 class="section-title">Everything You Need in One App</h2>
+    <p class="section-subtitle">Comprehensive health tracking designed for simplicity and effectiveness</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Blood Glucose Tracking</h3>
+        <p>Manually log readings from your glucometer with context like Before Meal or After Meal.
+          Supports both mg/dL and mmol/L units.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Food & Calorie Tracking</h3>
+        <p>Log meals with calories, carbs, and sugar. Search our database, scan barcodes, or enter manually. Save your
+          favorite foods for quick logging.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Automatic Step Tracking</h3>
+        <p>Syncs seamlessly with Apple Health to automatically fetch your daily step count. No manual entry needed.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Weight Monitoring</h3>
+        <p>Record your weight daily or weekly and view visual trends over time to track your progress toward your goals.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3>Daily Dashboard</h3>
+        <p>View all your logs in one clean timeline. See glucose, food, steps, weight, water intake, and energy burned
+          at a glance.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Smart Insights</h3>
+        <p>Discover patterns and understand how specific foods and activities affect your health metrics over time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="screenshots" class="screenshots-section">
+    <h2 class="section-title">See PortionPal in Action</h2>
+    <p class="section-subtitle">Beautiful design meets powerful functionality</p>
+    <div class="screenshots-container">
+      <img src="Assets/appImage.png" alt="PortionPal App Screenshots" class="screenshot-main">
+    </div>
+  </section>
+
+  <section id="privacy" class="section privacy-section">
+    <h2 class="section-title">Privacy First, Always</h2>
+    <p class="section-subtitle">Your health data belongs to you and stays with you</p>
+    <div class="privacy-features">
+      <div class="privacy-item">
+        <h3>Local Storage</h3>
+        <p>All data is stored locally on your device by default. Your information never leaves your phone.</p>
+      </div>
+      <div class="privacy-item">
+        <h3>iCloud Backup</h3>
+        <p>Automatic cloud backup via iCloud keeps your data secure and synced. Access your data even after reinstalling
+          or switching devices.</p>
+      </div>
+      <div class="privacy-item">
+        <h3>No Tracking</h3>
+        <p>We don't track, sell, or share your personal health data. Ever.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section pricing-section">
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <div class="pricing-info">
+      <div class="pricing-highlight">
+        <h3>14-Day Free Trial</h3>
+        <p>Try PortionPal free for 14 days with full access to all features. No credit card required.</p>
+      </div>
+      <p>After your trial ends, choose a subscription plan that works for you:</p>
+      <ul style="list-style: none; margin-top: 1.5rem; text-align: left;">
+        <li style="padding: 0.5rem 0;">✓ Weekly subscription</li>
+        <li style="padding: 0.5rem 0;">✓ Monthly subscription</li>
+        <li style="padding: 0.5rem 0;">✓ Yearly subscription</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <h2>Ready to Take Control of Your Health?</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem;">Start your journey to better health today.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-primary">Download for iOS</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 PortionPal. All rights reserved.</p>
+    <p style="margin-top: 1rem;">
+      <a href="privacy-policy.html">Privacy Policy</a> •
+      <a href="terms-and-conditions.html">Terms & Conditions</a> •
+      <a href="mailto:dev.ahmed.work@gmail.com?subject=PortionPal%20Feedback%20%7C%20Questions%20%7C%20Concern">Contact
+        Us</a>
+    </p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe feature cards
+    document.querySelectorAll('.feature-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(el);
+    });
+  </script>
+</body>
+
+</html>
