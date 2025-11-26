@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - PortionPal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', 'Futura', 'Futura PT', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.8;
+            color: #e0e0e0;
+            background: #121826;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(18, 24, 38, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .back-link {
+            color: #EC944F;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #DE574C;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 5% 3rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            color: #EC944F;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            color: #EC944F;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            background: #1a2332;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #EC944F;
+            margin: 1.5rem 0;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            color: #d0d0d0;
+        }
+
+        .contact-info a {
+            color: #EC944F;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-section {
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: #1a2332;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #EC944F;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #222b3d;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            color: #EC944F;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+            color: #d0d0d0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .info-box {
+            background: rgba(236, 148, 79, 0.1);
+            border: 2px solid #EC944F;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box p {
+            color: #d0d0d0;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: #0a0e1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #EC944F;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 100px 5% 2rem;
+            }
+
+            .faq-question {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="Assets/appIcon.png" alt="PortionPal Icon" class="logo-icon">
+            <span>PortionPal</span>
+        </a>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </nav>
+
+    <div class="container">
+        <h1>PortionPal Support</h1>
+        <p class="subtitle">Get help with using PortionPal and find answers to common questions</p>
+
+        <h2>Contact Us</h2>
+        <p>Need help? Have a question? We're here to assist you!</p>
+
+        <div class="contact-info">
+            <p><strong>Developer:</strong> Ahmed</p>
+            <p><strong>Location:</strong> Abbottabad, Pakistan</p>
+            <p><strong>Email:</strong> <a
+                    href="mailto:dev.ahmed.work@gmail.com?subject=PortionPal%20Support%20Request">dev.ahmed.work@gmail.com</a>
+            </p>
+            <p><strong>Phone:</strong> <a href="tel:+923021084911">+923021084911</a></p>
+        </div>
+
+        <div class="info-box">
+            <p><strong>Response Time:</strong> We typically respond to support requests within 24-48 hours.</p>
+            <p><strong>Best Way to Contact:</strong> Email us for detailed questions or bug reports. Include screenshots
+                when possible to help us assist you better.</p>
+        </div>
+
+        <h2>Subscription Support</h2>
+        <div class="contact-info">
+            <p><strong>Managing Your Subscription:</strong></p>
+            <p>All subscriptions are processed through Apple's In-App Purchase system. To manage your subscription:</p>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Open <strong>Settings</strong> on your iPhone</li>
+                <li>Tap your <strong>Apple ID</strong> at the top</li>
+                <li>Tap <strong>Subscriptions</strong></li>
+                <li>Select <strong>PortionPal</strong></li>
+                <li>Manage or cancel your subscription</li>
+            </ol>
+            <p style="margin-top: 1rem;"><strong>For billing issues:</strong> Contact <a
+                    href="https://support.apple.com" target="_blank">Apple Support</a> directly</p>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-section" id="faq-container">
+            <!-- FAQs will be loaded here by JavaScript -->
+        </div>
+
+        <h2>Additional Resources</h2>
+        <div class="contact-info">
+            <p><strong>Privacy Policy:</strong> <a href="privacy-policy.html">Learn how we protect your data</a></p>
+            <p><strong>Terms & Conditions:</strong> <a href="terms-and-conditions.html">Read our terms of service</a>
+            </p>
+            <p><strong>Report a Bug:</strong> Found a bug? Use the "Send Feedback" option in the app's More tab, or
+                email us directly</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PortionPal. All rights reserved.</p>
+        <p style="margin-top: 1rem;">
+            <a href="index.html">Home</a> •
+            <a href="privacy-policy.html">Privacy Policy</a> •
+            <a href="terms-and-conditions.html">Terms & Conditions</a> •
+            <a href="support.html">Support</a>
+        </p>
+    </footer>
+
+    <script>
+        // FAQ data
+        const faqs = [
+            {
+                "question": "What is PortionPal and how does it work?",
+                "answer": "PortionPal is a privacy first nutrition tracking app. Track your daily nutrition (calories, fat, carbs, protein), blood sugar, weight, and water intake. When you install the app, Canadian Nutrient File (CNF) data is preloaded into a local database, so the app works completely offline. If you can't find a food item, you can search the U.S. Department of Agriculture's database with over 1 million foods, or scan barcodes using Open Food Facts."
+            },
+            {
+                "question": "How do I set my daily calorie goal?",
+                "answer": "When you install the app for the first time, the onboarding steps calculate your recommended daily calories based on your health and weight goals. If you ever want to change it later, you can update your calorie goal anytime from the More tab in the app."
+            },
+            {
+                "question": "Do I need to enter my BMR or can I skip it?",
+                "answer": "No, you don't have to enter your BMR. You can skip that information during onboarding and manually set your daily calorie goal. PortionPal keeps things simple and gives you full control over how you want to track your nutrition. If you do choose to enter your data, it stays securely on your device, we don't send or store it anywhere else."
+            },
+            {
+                "question": "How do I add food to my daily log? Can I add items to other days as well?",
+                "answer": "To add food to your daily log, go to the Diary tab and tap the \"+\" button next to any meal (Breakfast, Lunch, Dinner, Snack). Search for a food item, pick your portion, and add it to your diary. You can also add items from the Log tab if you prefer searching there. Yes, you can add foods to past or future days. Just navigate to the date you want and add items the same way."
+            },
+            {
+                "question": "Can I change the weight of a food item if I ate a different portion?",
+                "answer": "Yes. After you add a food item to your diary, you can tap it on the Diary screen to open the edit view. From there, you can change the portion weight (and even the name if you need to), and the nutrition values will update automatically."
+            },
+            {
+                "question": "How do I delete a record in the app (food item, blood sugar, water, weight)?",
+                "answer": "You can delete any record by swiping left on the item you want to remove. A Delete button will appear, tap it, and the record will be removed from your log."
+            },
+            {
+                "question": "Does the app integrate with Apple Health?",
+                "answer": "Yes. PortionPal reads your steps and active energy data from Apple Health to give you better activity insights. At the moment, the app does not write food or other data back to Apple Health, but this is something we plan to support in future updates."
+            },
+            {
+                "question": "I found a bug, how do I report it?",
+                "answer": "We appreciate it when users help us improve the app. To report a bug, go to the More tab and tap Send Feedback. If possible, attach a screenshot or screen recording along with a short explanation, it helps us fix the issue faster."
+            },
+            {
+                "question": "If I move to a new device, will my data transfer? Does PortionPal support iCloud?",
+                "answer": "Yes, PortionPal automatically syncs with iCloud. All your data will be restored when you install the app on a new device using the same Apple ID."
+            },
+            {
+                "question": "How accurate is the calorie information?",
+                "answer": "We use verified nutritional databases including USDA and other trusted sources. However, actual values may vary based on preparation methods and portion sizes."
+            },
+            {
+                "question": "What's the difference between meals and food history?",
+                "answer": "Food history tracks individual food items you've eaten, while meals let you group multiple foods together for easier logging of common meal combinations."
+            },
+            {
+                "question": "Can I track my blood sugar levels?",
+                "answer": "Yes! PortionPal includes blood sugar tracking. Navigate to the Blood Sugar section to log your readings and view trends over time."
+            },
+            {
+                "question": "Is my health data private?",
+                "answer": "Absolutely. Your personal health data like blood sugar, weight, and meal logs are stored securely and sync only to your private iCloud account. We never share your data with third parties."
+            },
+            {
+                "question": "Can I export my data?",
+                "answer": "Currently, data export is not available, but we are planning to include this feature in upcoming versions."
+            }
+        ];
+
+        // Generate FAQ HTML
+        const faqContainer = document.getElementById('faq-container');
+        faqs.forEach((faq, index) => {
+            const faqItem = document.createElement('div');
+            faqItem.className = 'faq-item';
+            faqItem.innerHTML = `
+        <div class="faq-question">
+          <span>${faq.question}</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>${faq.answer}</p>
+        </div>
+      `;
+            faqContainer.appendChild(faqItem);
+
+            // Add click event
+            const question = faqItem.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                faqItem.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
