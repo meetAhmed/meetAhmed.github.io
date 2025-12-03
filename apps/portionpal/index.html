@@ -121,17 +121,26 @@
       max-width: 900px;
     }
 
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      margin-bottom: 1rem;
+    .app-name {
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      color: #EC944F;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
       animation: fadeInUp 0.8s ease-out;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.5rem, 4vw, 2.8rem);
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.8s ease-out 0.1s backwards;
     }
 
     .hero p {
       font-size: clamp(1rem, 2.5vw, 1.3rem);
       margin-bottom: 2rem;
       opacity: 0.95;
-      animation: fadeInUp 0.8s ease-out 0.2s backwards;
+      animation: fadeInUp 0.8s ease-out 0.3s backwards;
     }
 
     @keyframes fadeInUp {
@@ -151,7 +160,7 @@
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
-      animation: fadeInUp 0.8s ease-out 0.4s backwards;
+      animation: fadeInUp 0.8s ease-out 0.5s backwards;
     }
 
     .btn {
@@ -380,11 +389,6 @@
         grid-template-columns: 1fr;
         gap: 2rem;
       }
-
-      .privacy-features {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
     }
 
     @media (max-width: 480px) {
@@ -401,27 +405,6 @@
       .cta-buttons .btn {
         width: 100%;
         max-width: 300px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-      }
-
-      .cta-buttons {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .cta-buttons .btn {
-        width: 100%;
-        max-width: 300px;
-      }
-
-      .screenshot-item {
-        flex: 0 0 220px;
       }
     }
   </style>
@@ -444,18 +427,19 @@
       <li><a href="support.html">Support</a></li>
       <li><a
           href="mailto:dev.ahmed.work@gmail.com?subject=PortionPal%20Feedback%20%7C%20Questions%20%7C%20Concern">Contact
-          Us</a>
-      </li>
+          Us</a></li>
     </ul>
   </nav>
 
   <section class="hero">
     <div class="hero-content">
+      <div class="app-name">PORTIONPAL</div>
       <h1>Your Smart & Privacy First Health Companion</h1>
-      <p>Track glucose, calories, steps, and weight in one simple app. Whether managing diabetes or pursuing better
-        health, PortionPal guides you toward smarter habits and stronger control.</p>
+      <p>Track meals (calories & macros), blood sugar, water, steps, and weight with confidence. Your data stays on your
+        device and is never shared - your privacy comes first.</p>
       <div class="cta-buttons">
-        <a href="#" class="btn btn-primary">Download for iOS</a>
+        <a href="https://apps.apple.com/app/id6755035226" target="_blank" rel="noopener noreferrer"
+          class="btn btn-primary">Download for iOS</a>
       </div>
     </div>
   </section>
@@ -465,32 +449,44 @@
     <p class="section-subtitle">Comprehensive health tracking designed for simplicity and effectiveness</p>
     <div class="features-grid">
       <div class="feature-card">
-        <h3>Blood Glucose Tracking</h3>
-        <p>Manually log readings from your glucometer with context like Before Meal or After Meal.
-          Supports both mg/dL and mmol/L units.</p>
+        <h3>Complete Nutrition Tracking</h3>
+        <p>Track calories, carbs, fats, and protein for every meal. Search our extensive food database, scan barcodes,
+          or enter items manually. Save your favorite foods for lightning-fast logging.</p>
       </div>
       <div class="feature-card">
-        <h3>Food & Calorie Tracking</h3>
-        <p>Log meals with calories, carbs, and sugar. Search our database, scan barcodes, or enter manually. Save your
-          favorite foods for quick logging.</p>
+        <h3>Blood Glucose Monitoring</h3>
+        <p>Log readings from any glucometer with helpful context tags like "Before Meal" or "After Meal". Supports both
+          mg/dL and mmol/L units. Watch patterns emerge over time.</p>
       </div>
       <div class="feature-card">
-        <h3>Automatic Step Tracking</h3>
-        <p>Syncs seamlessly with Apple Health to automatically fetch your daily step count. No manual entry needed.</p>
+        <h3>Hydration Tracking</h3>
+        <p>Log your water intake throughout the day and stay on top of your hydration goals. Track every glass and see
+          your daily progress at a glance.</p>
       </div>
       <div class="feature-card">
-        <h3>Weight Monitoring</h3>
-        <p>Record your weight daily or weekly and view visual trends over time to track your progress toward your goals.
-        </p>
+        <h3>Automatic Activity Tracking</h3>
+        <p>Seamlessly syncs with Apple Health to fetch your daily step count and active energy burned. No manual entry
+          needed - just move and watch your progress build.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Weight Trends & Progress</h3>
+        <p>Record your weight daily or weekly and visualize your progress over time. See the bigger picture with clear,
+          motivating charts that show you're moving in the right direction.</p>
       </div>
       <div class="feature-card">
         <h3>Daily Dashboard</h3>
-        <p>View all your logs in one clean timeline. See glucose, food, steps, weight, water intake, and energy burned
-          at a glance.</p>
+        <p>See everything that matters in one clean timeline: glucose readings, meals with macros, water intake, steps,
+          active energy, and weight trends. All in one place.</p>
       </div>
       <div class="feature-card">
-        <h3>Smart Insights</h3>
-        <p>Discover patterns and understand how specific foods and activities affect your health metrics over time.</p>
+        <h3>Home Screen Widget</h3>
+        <p>Check your daily calorie and macro progress (carbs, fats, protein) right from your home screen. No need to
+          open the app - see your intake at a glance.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Apple Health Integration</h3>
+        <p>Connects seamlessly with Apple Health for automatic step tracking, active energy monitoring, and
+          comprehensive health data syncing.</p>
       </div>
     </div>
   </section>
@@ -518,7 +514,8 @@
       </div>
       <div class="privacy-item">
         <h3>No Tracking</h3>
-        <p>We don't track, sell, or share your personal health data. Ever.</p>
+        <p>We don't track, sell, or share your personal health data. No ads, no data selling, no third-party trackers.
+          Ever.</p>
       </div>
     </div>
   </section>
@@ -527,14 +524,19 @@
     <h2 class="section-title">Simple, Transparent Pricing</h2>
     <div class="pricing-info">
       <div class="pricing-highlight">
-        <h3>14-Day Free Trial</h3>
-        <p>Try PortionPal free for 14 days with full access to all features.</p>
+        <h3>Free Version Available</h3>
+        <p>Track unlimited food items from our database. Create up to 5 custom food items, log 3 custom meals, monitor
+          blood glucose (up to 10 readings), track weight (up to 10 entries), log water intake (up to 40 entries), and
+          view today's data and statistics.</p>
       </div>
-      <p>After your trial ends, choose a subscription plan that works for you:</p>
-      <ul style="list-style: none; margin-top: 1.5rem; text-align: left;">
-        <li style="padding: 0.5rem 0;">✓ Weekly subscription</li>
-        <li style="padding: 0.5rem 0;">✓ Monthly subscription</li>
-        <li style="padding: 0.5rem 0;">✓ Yearly subscription</li>
+      <p>Upgrade to Premium for unlimited tracking with features like:</p>
+      <ul style="list-style: none; margin-top: 1.5rem; text-align: center;">
+        <li style="padding: 0.5rem 0;">✓ Unlimited food items, meals, and logging</li>
+        <li style="padding: 0.5rem 0;">✓ Barcode scanning for quick food entry</li>
+        <li style="padding: 0.5rem 0;">✓ Manually add custom food items</li>
+        <li style="padding: 0.5rem 0;">✓ Complete history access for all past days</li>
+        <li style="padding: 0.5rem 0;">✓ Advanced progress charts and insights</li>
+        <li style="padding: 0.5rem 0;">✓ Weekly, Monthly, or Yearly subscription options</li>
       </ul>
     </div>
   </section>
@@ -543,7 +545,8 @@
     <h2>Ready to Take Control of Your Health?</h2>
     <p style="font-size: 1.2rem; margin-bottom: 2rem;">Start your journey to better health today.</p>
     <div class="cta-buttons">
-      <a href="#" class="btn btn-primary">Download for iOS</a>
+      <a href="https://apps.apple.com/app/id6755035226" target="_blank" rel="noopener noreferrer"
+        class="btn btn-primary">Download for iOS</a>
     </div>
   </section>
 
